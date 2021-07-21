@@ -18,15 +18,18 @@ public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
-
+	// http://localhost:8080/hello/illary?lastname=huaylupo
 	@GetMapping(value="/{firstName}")
 	public String helloGET( 
 			@PathVariable("firstName") String firstName,
 			@RequestParam("lastName") String lastName) {
 		return String.format("{\"message\":\"Hello %s %s\"}",firstName, lastName);
+		//{“message”:”Hello illary huaylupo”}
 	}
 	
 	@PostMapping
+	//http://localhost:8080/hello/
+	//{"firstName":'firstNameV' , "lastName": 'lastNameV'}
 	public String helloPOST( @RequestBody HelloRequest request) {
 		return String.format("{\"message\":\"Hello %s %s\"}",request.getFirstName(), request.getLastName());
 	}
